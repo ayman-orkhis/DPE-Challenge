@@ -1,16 +1,24 @@
 import json
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 EVAL_SETS = ["test", "private_test"]
 
 
-def compute_accuracy(predictions, targets):
-    # Make sure there is no NaN, as pandas ignores them in mean computation
-    predictions = predictions.fillna(-10).values
-    # Return mean of correct predictions
-    return (predictions == targets.values).mean()
+def compute_rmse(predictions, targets):
+    """Compute Root Mean Squared Error."""
+    predictions = predictions.values.ravel().astype(float)
+    targets = targets.values.ravel().astype(float)
+    return float(np.sqrt(np.mean((predictions - targets) ** 2)))
+
+
+def compute_mae(predictions, targets):
+    """Compute Mean Absolute Error."""
+    predictions = predictions.values.ravel().astype(float)
+    targets = targets.values.ravel().astype(float)
+    return float(np.mean(np.abs(predictions - targets)))
 
 
 def main(reference_dir, prediction_dir, output_dir):
@@ -25,7 +33,14 @@ def main(reference_dir, prediction_dir, output_dir):
             reference_dir / f'{eval_set}_labels.csv'
         )
 
-        scores[eval_set] = float(compute_accuracy(predictions, targets))
+        rmse = compute_rmse(predictions, targets)
+        mae = compute_mae(predictions, targets)
+
+        scores[eval_set] = rmse
+        scores[f'{eval_set}_mae'] = mae
+
+        print(f'  RMSE: {rmse:.4f}')
+        print(f'  MAE:  {mae:.4f}')
 
     # Add train and test times in the score
     json_durations = (prediction_dir / 'metadata.json').read_text()

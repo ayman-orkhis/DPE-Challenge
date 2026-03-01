@@ -4,4 +4,12 @@
 # Note that the import cannot be done at the top level of
 # the ingestion program
 
-N_SAMPLES = 1000
+TARGET_COLUMN = "conso_5_usages_par_m2_ef"
+
+LEAK_COLUMNS = [
+    "etiquette_dpe",
+    "etiquette_ges",
+    "cout_chauffage",
+    "cout_total_5_usages",
+    "emission_ges_5_usages_par_m2",
+]

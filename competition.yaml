@@ -1,6 +1,6 @@
 version: 2
-title: Templat competition - Dummy classification
-description: Dummy classification task
+title: DPE Energy Consumption Prediction Challenge
+description: Predict the final energy consumption per square meter (conso_5_usages_par_m2_ef) of French buildings from their physical and administrative characteristics.
 image: logo.png
 registration_auto_approve: False  # if True, do not require approval from admin to join the comp
 
@@ -15,8 +15,8 @@ pages:
 
 tasks:
   - index: 0
-    name: Developement Task
-    description: 'Tune models with training data, test against examples contained in public test data'
+    name: Development Task
+    description: 'Tune regression models with training data, test against examples contained in public test data'
     input_data: dev_phase/input_data/
     reference_data: dev_phase/reference_data/
     ingestion_program: ingestion_program/
@@ -28,10 +28,9 @@ solutions:
     - 0
     path: solution/
 
-
 phases:
   - name: Development Phase
-    description: 'Development phase: tune your models.'
+    description: 'Development phase: tune your regression models.'
     start: 10-07-2025
     end: 03-31-2026
     tasks:
@@ -41,20 +40,29 @@ leaderboards:
   - title: Results
     key: main
     columns:
-      - title: Test Accuracy
+      - title: Test RMSE
         key: test
         index: 0
         sorting: asc
-      - title: Private Test Accuracy
+      - title: Private Test RMSE
         key: private_test
         index: 1
         sorting: asc
         hidden: True
+      - title: Test MAE
+        key: test_mae
+        index: 2
+        sorting: asc
+      - title: Private Test MAE
+        key: private_test_mae
+        index: 3
+        sorting: asc
+        hidden: True
       - title: Train time
         key: train_time
-        index: 2
+        index: 4
         sorting: desc
       - title: Test time
         key: test_time
-        index: 3
+        index: 5
         sorting: desc

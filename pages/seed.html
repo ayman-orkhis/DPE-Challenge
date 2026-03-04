@@ -1,17 +1,6 @@
-from sklearn.compose import ColumnTransformer
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OrdinalEncoder
-from sklearn.impute import SimpleImputer
+# Seed:
 
-
-# The submission here should simply be a function that returns a model
-# compatible with scikit-learn API (must have fit and predict methods).
-#
-# This baseline uses a Pipeline that:
-# 1. Encodes categorical (string) columns with OrdinalEncoder
-# 2. Passes numeric columns through unchanged
-# 3. Fits a RandomForestRegressor
+```
 def get_model():
 
     categorical_pipeline = Pipeline([
@@ -47,3 +36,5 @@ def get_model():
     ])
 
     return model
+
+```

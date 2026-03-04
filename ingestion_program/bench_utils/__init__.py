@@ -12,4 +12,7 @@ LEAK_COLUMNS = [
     "cout_chauffage",
     "cout_total_5_usages",
     "emission_ges_5_usages_par_m2",
+    '_score',
+    'numero_dpe',
+    'type_energie_n2'
 ]

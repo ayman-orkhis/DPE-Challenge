@@ -1,0 +1,80 @@
+version: 2
+title: DPE Energy Consumption Prediction Challenge
+description: Predict the final energy consumption per square meter (conso_5_usages_par_m2_ef) of French buildings from their physical and administrative characteristics.
+image: logo.png
+registration_auto_approve: False  # if True, do not require approval from admin to join the comp
+
+terms: pages/terms.html
+pages:
+  - title: Overview
+    file: pages/overview.html
+  - title: Participation
+    file: pages/participate.html
+  - title: Seed
+    file: pages/seed.html
+  - title: Timeline
+    file: pages/timeline.html
+
+tasks:
+  - index: 0
+    name: Development Task
+    description: 'Tune regression models with training data, test against examples contained in public test data'
+    
+    input_data: dev_phase/input_data/
+    reference_data: dev_phase/reference_data/
+
+    ingestion_program: ingestion_program/
+    scoring_program: scoring_program/
+
+    #docker_image: wiamla/dpechallenge:v1
+
+solutions:
+  - index: 0
+    tasks:
+    - 0
+    path: solution/
+
+phases:
+  - name: Development Phase
+    description: 'Development phase: tune your regression models.'
+    start: 03-01-2026
+    end: 10-05-2026
+    tasks:
+      - 0
+  - name: Final Phase
+    description: 'Final phase: submit your models.'
+    start: 11-05-2026
+    end: 10-09-2026
+    tasks:
+      - 0
+
+leaderboards:
+  - title: Results
+    key: main
+    columns:
+      - title: Test RMSE
+        key: test
+        index: 0
+        sorting: asc
+      - title: Private Test RMSE
+        key: private_test
+        index: 1
+        sorting: asc
+        hidden: True
+      - title: Test MAE
+        key: test_mae
+        index: 2
+        sorting: asc
+      - title: Private Test MAE
+        key: private_test_mae
+        index: 3
+        sorting: asc
+        hidden: True
+      - title: Train time
+        key: train_time
+        index: 4
+        sorting: desc
+      - title: Test time
+        key: test_time
+        index: 5
+        sorting: desc

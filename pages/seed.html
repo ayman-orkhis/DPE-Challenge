@@ -1,0 +1,40 @@
+# Seed:
+
+```
+def get_model():
+
+    categorical_pipeline = Pipeline([
+        ("imputer", SimpleImputer(strategy="most_frequent")),
+        ("encoder", OrdinalEncoder())
+    ])
+
+    numeric_pipeline = Pipeline([
+        ("imputer", SimpleImputer(strategy="median"))
+    ])
+
+    preprocessor = ColumnTransformer(
+        transformers=[
+            (
+                "cat",
+                categorical_pipeline,
+                lambda X: X.select_dtypes(include=["object", "category"]).columns.tolist()
+            ),
+            (
+                "num",
+                numeric_pipeline,
+                lambda X: X.select_dtypes(exclude=["object", "category"]).columns.tolist()
+            ),
+        ]
+    )
+
+    model = Pipeline([
+        ("preprocessor", preprocessor),
+        ("regressor", RandomForestRegressor(
+            n_estimators=100,
+            random_state=42
+        )),
+    ])
+
+    return model
+
+```

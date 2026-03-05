@@ -1,0 +1,73 @@
+<div style="font-family: Arial, sans-serif; font-size: 15px; line-height: 1.7; color: #222; max-width: 860px; margin: 0 auto; padding: 20px 30px;">
+
+  <h1 style="font-size: 2em; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-top: 30px;">How to Participate</h1>
+
+  <p>To participate in this challenge, you need to download the provided starter files and submit a Python model implementation.</p>
+
+  <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;" />
+
+  <h2 style="font-size: 1.4em; border-left: 4px solid #4a90d9; padding-left: 12px; margin-top: 35px;">1. Download the Starter Files</h2>
+
+  <p>Download the following folders from the competition page:</p>
+
+  <ul style="padding-left: 22px;">
+    <li style="margin-bottom: 6px;"><code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">ingestion_program/</code></li>
+    <li style="margin-bottom: 6px;"><code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">dev_phase/input_data/</code></li>
+    <li style="margin-bottom: 6px;"><code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">solution/</code></li>
+  </ul>
+
+  <p>After downloading, make sure <code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">ingestion_program</code> and <code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">solution</code> are located at the <strong>same level in your project directory</strong>.</p>
+
+  <p>Repository structure (the code will not run correctly if this structure is not respected):</p>
+
+  <div style="background: #f7f9fc; border: 1px solid #dde3ed; border-radius: 6px; padding: 14px 20px; font-family: monospace; font-size: 0.92em; line-height: 1.8; margin: 15px 0;">
+    project_folder/<br />
+    │<br />
+    ├── ingestion_program/<br />
+    │&nbsp;&nbsp;&nbsp;└── ingestion.py<br />
+    ├── dev_phase/<br />
+    │&nbsp;&nbsp;&nbsp;└── input_data/<br />
+    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── train_features.csv<br />
+    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── test_features.csv<br />
+    │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── private_test_features.csv<br />
+    └── solution/<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;└── submission.py
+  </div>
+
+  <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;" />
+
+  <h2 style="font-size: 1.4em; border-left: 4px solid #4a90d9; padding-left: 12px; margin-top: 35px;">2. Implement Your Model</h2>
+
+  <p>Your task is to modify the file: <code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">solution/submission.py</code></p>
+
+  <p>Inside this file, you should:</p>
+
+  <ul style="padding-left: 22px;">
+    <li style="margin-bottom: 6px;">Define your <strong>data preprocessing pipeline</strong></li>
+    <li style="margin-bottom: 6px;">Define your <strong>machine learning model</strong></li>
+  </ul>
+
+  <p>The ingestion program will automatically:</p>
+
+  <ol style="padding-left: 22px;">
+    <li style="margin-bottom: 6px;">Load your model from <code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">submission.py</code></li>
+    <li style="margin-bottom: 6px;">Train it on the training data</li>
+    <li style="margin-bottom: 6px;">Evaluate it on the test sets</li>
+  </ol>
+
+  <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;" />
+
+  <h2 style="font-size: 1.4em; border-left: 4px solid #4a90d9; padding-left: 12px; margin-top: 35px;">3. Run the Ingestion Program Locally</h2>
+
+  <p>Once your model is implemented, you can test your solution locally by running the ingestion program. From the project root directory, run:</p>
+
+  <pre style="background: #1e1e2e; color: #cdd6f4; padding: 16px 20px; border-radius: 6px; overflow-x: auto; font-size: 0.9em; line-height: 1.6; margin: 15px 0;"><code style="background: none; padding: 0; font-family: monospace;">python ingestion_program/ingestion.py \
+    --data-dir input_data/ \
+    --output-dir ingestion_res/ \
+    --submission-dir solution/</code></pre>
+
+  <div style="background: #e8f4fd; border-left: 4px solid #4a90d9; padding: 12px 18px; border-radius: 4px; margin: 15px 0;">
+    This command will generate a zipped file <code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">solution.zip</code> inside the <code style="background:#f0f0f0; padding: 2px 6px; border-radius: 4px; font-family: monospace;">ingestion_res/</code> folder.
+  </div>
+
+</div>
